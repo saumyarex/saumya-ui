@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 
@@ -90,13 +91,14 @@ export function CommandMenu() {
         </kbd>
       </button>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-[12vh]"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Search components"
-        >
+      {open &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-[12vh]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search components"
+          >
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
@@ -137,8 +139,9 @@ export function CommandMenu() {
               )}
             </div>
           </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
