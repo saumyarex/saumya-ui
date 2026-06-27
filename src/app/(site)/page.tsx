@@ -118,7 +118,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
-          {blocks.map((entry) => (
+          {blocks.slice(0, 4).map((entry) => (
             <BlockCard key={entry.name} entry={entry} />
           ))}
         </div>

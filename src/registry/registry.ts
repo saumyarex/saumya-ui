@@ -255,7 +255,7 @@ export const registry: RegistryEntry[] = [
     title: "Centered Hero",
     description:
       "A centered marketing hero with a badge, headline, subtext, and dual CTAs over a masked dotted grid. Drops onto any landing page.",
-    category: "Marketing",
+    category: "Heroes",
     tier: "block",
     dependencies: ["lucide-react"],
     registryDependencies: ["button", "badge"],
@@ -273,7 +273,7 @@ export const registry: RegistryEntry[] = [
     title: "Three-Tier Pricing",
     description:
       "A responsive three-column pricing section with a highlighted 'most popular' plan, feature checklists, and per-tier CTAs.",
-    category: "Marketing",
+    category: "Pricing",
     tier: "block",
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["button", "badge"],
@@ -292,7 +292,7 @@ export const registry: RegistryEntry[] = [
     title: "CTA Banner",
     description:
       "A high-contrast call-to-action band on an inverted surface with a soft halo and two actions. The closer for any landing page.",
-    category: "Marketing",
+    category: "CTA",
     tier: "block",
     dependencies: ["lucide-react"],
     registryDependencies: ["button"],
@@ -304,6 +304,136 @@ export const registry: RegistryEntry[] = [
       },
     ],
     date: "2026-06-27",
+  },
+  {
+    name: "navbar",
+    title: "Navbar",
+    description:
+      "A responsive marketing navbar with logo, links, auth + CTA buttons, and a mobile menu toggle.",
+    category: "Navigation",
+    tier: "block",
+    dependencies: ["lucide-react", "clsx", "tailwind-merge"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        source: "src/registry/blocks/navbar.tsx",
+        target: "components/blocks/navbar.tsx",
+        type: "registry:block",
+      },
+      UTILS_FILE,
+    ],
+    date: "2026-06-28",
+    featured: true,
+  },
+  {
+    name: "feature-grid",
+    title: "Feature Grid",
+    description:
+      "A three-column feature section with hairline dividers, icon tiles, and concise copy.",
+    category: "Features",
+    tier: "block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/feature-grid.tsx",
+        target: "components/blocks/feature-grid.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+  },
+  {
+    name: "bento-features",
+    title: "Bento Features",
+    description:
+      "An asymmetric bento grid for highlighting features at different weights — a wide hero cell plus supporting tiles.",
+    category: "Features",
+    tier: "block",
+    dependencies: ["lucide-react", "clsx", "tailwind-merge"],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/bento-features.tsx",
+        target: "components/blocks/bento-features.tsx",
+        type: "registry:block",
+      },
+      UTILS_FILE,
+    ],
+    date: "2026-06-28",
+    featured: true,
+  },
+  {
+    name: "testimonials",
+    title: "Testimonials",
+    description:
+      "A two-column grid of testimonial cards with quotes, initials avatars, and attribution.",
+    category: "Social Proof",
+    tier: "block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/testimonials.tsx",
+        target: "components/blocks/testimonials.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+  },
+  {
+    name: "stats",
+    title: "Stats",
+    description:
+      "A four-up metrics band with large numerals and labels, divided by hairlines.",
+    category: "Social Proof",
+    tier: "block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/stats.tsx",
+        target: "components/blocks/stats.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+  },
+  {
+    name: "logo-cloud",
+    title: "Logo Cloud",
+    description:
+      "A 'trusted by' band of wordmark logos that brighten on hover — drop in your customers' names.",
+    category: "Social Proof",
+    tier: "block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/logo-cloud.tsx",
+        target: "components/blocks/logo-cloud.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+  },
+  {
+    name: "faq",
+    title: "FAQ Accordion",
+    description:
+      "An accessible FAQ built on native <details> — keyboard-friendly, no JavaScript, with an animated open indicator.",
+    category: "FAQ",
+    tier: "block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/faq.tsx",
+        target: "components/blocks/faq.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
   },
 ];
 
