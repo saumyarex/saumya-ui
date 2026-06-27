@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .bg { fill: #0a0a0f }
+    .fg { fill: #fafafa }
+    .ln { stroke: #fafafa }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #fafafa }
+      .fg { fill: #0a0a0f }
+      .ln { stroke: #0a0a0f }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="7" />
+  <!-- back square (peeks top-left) -->
+  <rect class="ln" x="8" y="8" width="11" height="11" rx="3" fill="none" stroke-width="2" />
+  <!-- knockout so the two squares read separately -->
+  <rect class="bg" x="11.4" y="11.4" width="13.6" height="13.6" rx="4" />
+  <!-- front square -->
+  <rect class="fg" x="13" y="13" width="11" height="11" rx="3" />
+</svg>

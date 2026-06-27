@@ -45,14 +45,45 @@ export function ogImage({
               justifyContent: "center",
               width: 44,
               height: 44,
-              borderRadius: 10,
+              borderRadius: 11,
               background: ACCENT,
-              color: INK,
-              fontSize: 26,
-              fontWeight: 800,
             }}
           >
-            S
+            <div style={{ position: "relative", display: "flex", width: 24, height: 24 }}>
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: 15,
+                  height: 15,
+                  borderRadius: 4,
+                  border: `3px solid ${INK}`,
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 5,
+                  top: 5,
+                  width: 19,
+                  height: 19,
+                  borderRadius: 5,
+                  background: ACCENT,
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 7,
+                  top: 7,
+                  width: 15,
+                  height: 15,
+                  borderRadius: 4,
+                  background: INK,
+                }}
+              />
+            </div>
           </div>
           <div style={{ display: "flex", fontSize: 26, color: FG, fontWeight: 600 }}>
             Saumya <span style={{ color: MUTED, marginLeft: 8 }}>UI</span>

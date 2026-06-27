@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SITE } from "@/lib/site";
+import { Logo } from "@/components/site/logo";
 
 export function Footer() {
   return (
@@ -9,9 +10,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div className="max-w-xs">
             <div className="flex items-center gap-2 font-semibold tracking-tight">
-              <span className="grid size-6 place-items-center rounded-md bg-accent text-xs font-bold text-accent-fg">
-                S
-              </span>
+              <Logo className="size-6 text-foreground" />
               Saumya <span className="text-muted">UI</span>
             </div>
             <p className="mt-3 text-sm text-muted">
