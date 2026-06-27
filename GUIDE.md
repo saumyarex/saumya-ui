@@ -322,7 +322,25 @@ kept **in sync** with `globals.css`.
 
 ## 11. Recipes (how to make changes)
 
-### ➕ Add a new component
+### ⚡ Fastest way: the generator
+Don't hand-create files. Run one command and it scaffolds the source file, the
+demo, and wires both `demos.ts` and `registry.ts` for you:
+
+```bash
+npm run new:component fancy-button
+npm run new:block     feature-split
+npm run new:template  waitlist-page
+```
+
+Then just (1) fill in the design in the new source file and (2) tidy the starter
+entry it added to `registry.ts` (description, category, dependencies). Run
+`npm run dev` and it's live. The manual steps below are what the generator does
+for you — useful to understand, rarely needed by hand.
+
+> The generator finds `// @new-import`, `// @new-demo`, and `// @new-entry`
+> marker comments and inserts above them. Don't delete those markers.
+
+### ➕ Add a new component (manual)
 1. Create the file: `src/registry/ui/my-thing.tsx`. Use `@/lib/utils` for `cn`.
 2. Create a small demo: `src/registry/demos/my-thing-demo.tsx` (a default export
    that shows it off).
