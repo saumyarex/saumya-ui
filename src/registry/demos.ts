@@ -21,6 +21,8 @@ import { Footer } from "./blocks/footer";
 
 import { SaasLanding } from "./templates/saas-landing";
 
+// @new-import — `npm run new:*` inserts demo imports above this line
+
 /** Live preview component for each registry entry, keyed by slug. */
 export const demos: Record<string, ComponentType> = {
   // Components — a focused demo per component.
@@ -44,4 +46,5 @@ export const demos: Record<string, ComponentType> = {
   footer: Footer,
   // Templates — a full page.
   "saas-landing": SaasLanding,
+  // @new-demo — `npm run new:*` inserts demo entries above this line
 };

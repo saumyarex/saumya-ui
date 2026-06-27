@@ -489,6 +489,7 @@ export const registry: RegistryEntry[] = [
     date: "2026-06-28",
     featured: true,
   },
+  // @new-entry — `npm run new:*` inserts new entries above this line
 ];
 
 /** Tier of an entry, defaulting to "component". */

@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "registry": "node scripts/build-registry.mjs",
+    "new:component": "node scripts/new.mjs component",
+    "new:block": "node scripts/new.mjs block",
+    "new:template": "node scripts/new.mjs template",
     "predev": "node scripts/build-registry.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/build-registry.mjs",
