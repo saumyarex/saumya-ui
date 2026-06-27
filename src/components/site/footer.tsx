@@ -1,0 +1,86 @@
+import Link from "next/link";
+
+export function Footer() {
+  return (
+    <footer className="mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
+          <div className="max-w-xs">
+            <div className="flex items-center gap-2 font-semibold tracking-tight">
+              <span className="grid size-6 place-items-center rounded-md bg-accent text-xs font-bold text-accent-fg">
+                S
+              </span>
+              Saumya <span className="text-muted">UI</span>
+            </div>
+            <p className="mt-3 text-sm text-muted">
+              Accessible React components, blocks &amp; templates. Copy-paste or
+              install with the shadcn CLI.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3">
+            <div className="flex flex-col gap-2">
+              <span className="font-medium text-foreground">Library</span>
+              <Link href="/components" className="text-muted hover:text-foreground">
+                Components
+              </Link>
+              <Link href="/blocks" className="text-muted hover:text-foreground">
+                Blocks
+              </Link>
+              <Link href="/templates" className="text-muted hover:text-foreground">
+                Templates
+              </Link>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-medium text-foreground">Saumya</span>
+              <a href="https://saumyarex.xyz" className="text-muted hover:text-foreground">
+                Portfolio
+              </a>
+              <a
+                href="https://studio.saumyarex.xyz"
+                className="text-muted hover:text-foreground"
+              >
+                Studio
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted hover:text-foreground"
+              >
+                GitHub
+              </a>
+            </div>
+            <div className="col-span-2 flex flex-col gap-2 sm:col-span-1">
+              <span className="font-medium text-foreground">Need it built?</span>
+              <p className="text-muted">
+                I design &amp; ship landing pages and MVPs through{" "}
+                <a
+                  href="https://studio.saumyarex.xyz"
+                  className="font-medium text-foreground underline-offset-4 hover:underline"
+                >
+                  Saumya Studio
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row">
+          <p>
+            Built by{" "}
+            <a
+              href="https://saumyarex.xyz"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              Saumya
+            </a>{" "}
+            — design engineer.
+          </p>
+          <p>MIT licensed. Open source. Copy, paste, ship.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
