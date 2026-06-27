@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Registry codegen (regenerated on predev/prebuild)
+/src/registry/__generated__/
