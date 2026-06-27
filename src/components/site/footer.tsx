@@ -30,6 +30,9 @@ export function Footer() {
               <Link href="/templates" className="text-muted hover:text-foreground">
                 Templates
               </Link>
+              <Link href="/changelog" className="text-muted hover:text-foreground">
+                Changelog
+              </Link>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-medium text-foreground">Saumya</span>

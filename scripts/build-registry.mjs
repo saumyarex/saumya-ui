@@ -11,7 +11,12 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 // Every file that any registry entry may ship, plus the per-component MDX docs.
-const SOURCE_DIRS = ["src/registry/ui", "src/registry/blocks", "src/registry/docs"];
+const SOURCE_DIRS = [
+  "src/registry/ui",
+  "src/registry/blocks",
+  "src/registry/templates",
+  "src/registry/docs",
+];
 const EXTRA_FILES = ["src/lib/utils.ts"];
 
 async function collect() {

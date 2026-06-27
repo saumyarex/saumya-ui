@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/ui/*": ["./src/registry/ui/*"]
+      "@/components/ui/*": ["./src/registry/ui/*"],
+      "@/components/blocks/*": ["./src/registry/blocks/*"]
     }
   },
   "include": [

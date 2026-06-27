@@ -1,68 +1,66 @@
 import { type Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, LayoutTemplate } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+import { getByTier } from "@/registry/registry";
 import { Button } from "@/registry/ui/button";
-import { Badge } from "@/registry/ui/badge";
+import { TemplateCard } from "@/components/site/template-card";
 
 export const metadata: Metadata = {
   title: "Templates",
   description:
-    "Full, production-ready page templates — landing pages, waitlists, and dashboards — assembled from Saumya UI blocks and components.",
+    "Full, production-ready page templates assembled from Saumya UI blocks and components. Install a whole page with one command.",
 };
 
-const planned = [
-  { name: "SaaS landing page", note: "Hero → features → pricing → FAQ → CTA" },
-  { name: "Waitlist / coming soon", note: "Email capture + social proof" },
-  { name: "Startup pricing page", note: "Plans, comparison, FAQ" },
-  { name: "Admin dashboard shell", note: "Sidebar, topbar, data views" },
+const upcoming = [
+  "Waitlist / coming soon",
+  "Startup pricing page",
+  "Admin dashboard shell",
+  "Docs site",
 ];
 
 export default function TemplatesPage() {
+  const templates = getByTier("template");
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-      <div className="mx-auto grid size-12 place-items-center rounded-base border border-border bg-surface">
-        <LayoutTemplate className="size-6 text-foreground" />
-      </div>
-      <Badge variant="soft" className="mt-6">
-        Coming soon
-      </Badge>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-        Full page templates
-      </h1>
-      <p className="mx-auto mt-3 max-w-xl text-pretty text-muted">
-        Production-ready pages assembled from the blocks and components — clone a
-        whole landing page or dashboard and make it yours. The first templates
-        land here soon.
-      </p>
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <header className="mb-10">
+        <h1 className="text-3xl font-semibold tracking-tight">Templates</h1>
+        <p className="mt-2 max-w-2xl text-muted">
+          Complete, production-ready pages assembled from the blocks. Install one
+          and every block and component it uses comes with it — then make it yours.
+        </p>
+      </header>
 
-      <ul className="mx-auto mt-10 grid max-w-md gap-3 text-left">
-        {planned.map((t) => (
-          <li
-            key={t.name}
-            className="flex items-center justify-between gap-3 rounded-base border border-border bg-surface px-4 py-3"
-          >
-            <div>
-              <p className="text-sm font-medium">{t.name}</p>
-              <p className="text-xs text-muted">{t.note}</p>
-            </div>
-            <span className="text-xs text-muted">Planned</span>
-          </li>
+      <div className="grid gap-6 lg:grid-cols-2">
+        {templates.map((entry) => (
+          <TemplateCard key={entry.name} entry={entry} />
         ))}
-      </ul>
-
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <Button asChild>
-          <Link href="/blocks">
-            Browse blocks <ArrowRight />
-          </Link>
-        </Button>
-        <Button asChild variant="outline">
-          <a href="https://studio.saumyarex.xyz" target="_blank" rel="noreferrer">
-            Need it built? Saumya Studio
-          </a>
-        </Button>
       </div>
+
+      {/* Pro / All-Access scaffolding — everything is free today. */}
+      <section className="mt-14 overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center">
+          <div className="max-w-xl">
+            <span className="inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
+              All-Access · coming soon
+            </span>
+            <h2 className="mt-3 text-xl font-semibold tracking-tight">
+              More templates on the way
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              Every template is free today. Premium, full-stack templates
+              ({upcoming.join(", ")}) will land under an optional All-Access plan —
+              the open components and blocks stay free forever.
+            </p>
+          </div>
+          <Button asChild variant="outline">
+            <Link href="/blocks">
+              Browse blocks <ArrowRight />
+            </Link>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }

@@ -17,6 +17,9 @@ import { Testimonials } from "./blocks/testimonials";
 import { Stats } from "./blocks/stats";
 import { LogoCloud } from "./blocks/logo-cloud";
 import { Faq } from "./blocks/faq";
+import { Footer } from "./blocks/footer";
+
+import { SaasLanding } from "./templates/saas-landing";
 
 /** Live preview component for each registry entry, keyed by slug. */
 export const demos: Record<string, ComponentType> = {
@@ -38,4 +41,7 @@ export const demos: Record<string, ComponentType> = {
   stats: Stats,
   "logo-cloud": LogoCloud,
   faq: Faq,
+  footer: Footer,
+  // Templates — a full page.
+  "saas-landing": SaasLanding,
 };

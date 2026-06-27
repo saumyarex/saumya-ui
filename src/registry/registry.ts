@@ -46,6 +46,8 @@ export interface RegistryEntry {
   css?: string;
   /** Props reference, rendered as a table on the docs page. */
   props?: PropDef[];
+  /** Paid tier. Free now, but the flag lets a Pro/All-Access tier slot in later. */
+  pro?: boolean;
   /** ISO date, used for sorting "new" badges. */
   date: string;
   featured?: boolean;
@@ -434,6 +436,58 @@ export const registry: RegistryEntry[] = [
       },
     ],
     date: "2026-06-28",
+  },
+  {
+    name: "footer",
+    title: "Footer",
+    description:
+      "A multi-column marketing footer with link groups, wordmark, and a social + copyright row.",
+    category: "Navigation",
+    tier: "block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        source: "src/registry/blocks/footer.tsx",
+        target: "components/blocks/footer.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+  },
+
+  /* ---------------------------- Templates --------------------------- */
+  {
+    name: "saas-landing",
+    title: "SaaS Landing Page",
+    description:
+      "A complete, production-ready SaaS landing page — navbar, hero, logos, features, bento, stats, testimonials, pricing, FAQ, CTA, and footer — assembled from the blocks. Install it and every block and component comes with it.",
+    category: "Marketing",
+    tier: "template",
+    pro: false,
+    dependencies: [],
+    registryDependencies: [
+      "navbar",
+      "hero-centered",
+      "logo-cloud",
+      "feature-grid",
+      "bento-features",
+      "stats",
+      "testimonials",
+      "pricing-three-tier",
+      "faq",
+      "cta-banner",
+      "footer",
+    ],
+    files: [
+      {
+        source: "src/registry/templates/saas-landing.tsx",
+        target: "components/templates/saas-landing.tsx",
+        type: "registry:block",
+      },
+    ],
+    date: "2026-06-28",
+    featured: true,
   },
 ];
 

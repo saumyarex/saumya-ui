@@ -9,11 +9,13 @@ import { SpotlightCard } from "@/registry/ui/spotlight-card";
 import { ShimmerButton } from "@/registry/ui/shimmer-button";
 import { ComponentCard } from "@/components/site/component-card";
 import { BlockCard } from "@/components/site/block-card";
+import { TemplateCard } from "@/components/site/template-card";
 import { CodeBlock } from "@/components/site/code-block";
 
 export default function HomePage() {
   const components = getByTier("component");
   const blocks = getByTier("block");
+  const templates = getByTier("template");
   const featured = components.filter((e) => e.featured);
 
   return (
@@ -123,6 +125,31 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Templates */}
+      {templates.length > 0 && (
+        <section className="py-8">
+          <div className="mb-6 flex items-end justify-between">
+            <div>
+              <h2 className="text-xl font-semibold tracking-tight">Templates</h2>
+              <p className="mt-1 text-sm text-muted">
+                Full pages, assembled from the blocks — install everything at once.
+              </p>
+            </div>
+            <Link
+              href="/templates"
+              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+            >
+              View all →
+            </Link>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {templates.map((entry) => (
+              <TemplateCard key={entry.name} entry={entry} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Install */}
       <section id="install" className="scroll-mt-20 py-16">
