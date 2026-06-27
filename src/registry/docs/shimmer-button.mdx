@@ -1,0 +1,19 @@
+## Overview
+
+A primary call-to-action button with a light sheen that sweeps across on hover.
+It draws the eye to your most important action without being noisy.
+
+## How it works
+
+The sheen is a single `::before` pseudo-element — a horizontal gradient that's
+translated off-screen and slides across on `hover`. There are **no keyframes and
+no dependencies** beyond `cn`, so it's trivial to drop into any project.
+
+> Prefer one shimmer button per view. Like any motion accent, its impact comes
+> from being the exception, not the rule.
+
+## Accessibility
+
+It's a native `<button>`, so focus and keyboard activation work out of the box,
+with a visible focus ring. The motion is hover-only and subtle, avoiding
+distraction for users sensitive to movement.

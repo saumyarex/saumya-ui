@@ -1,0 +1,22 @@
+## Overview
+
+An on/off toggle built on Radix Switch — the right control for an immediate,
+binary setting that applies without a separate "save" step (think dark mode or
+notifications).
+
+## Controlled vs uncontrolled
+
+Use `defaultChecked` for simple, uncontrolled usage. For controlled state, pair
+`checked` with `onCheckedChange`:
+
+`<Switch checked={on} onCheckedChange={setOn} />`
+
+## Labeling
+
+A switch needs an accessible name. The simplest approach is to wrap it in a
+`<label>` alongside its text, so clicking the label toggles the control.
+
+## Accessibility
+
+Radix renders the correct `role="switch"` and `aria-checked` state, and the
+control is fully keyboard operable (`Space` / `Enter`) with a visible focus ring.

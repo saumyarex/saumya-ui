@@ -1,0 +1,27 @@
+## Overview
+
+A foundational button built on `class-variance-authority` for type-safe variants
+and Radix `Slot` for polymorphism. It is the building block most other components
+compose with.
+
+## When to use
+
+Use the **primary** variant for the single most important action in a view, and
+**secondary** / **outline** / **ghost** for everything supporting. Reserve
+**link** for inline, low-emphasis actions.
+
+## Polymorphism
+
+Because the button is built on Radix `Slot`, the `asChild` prop lets it render as
+any element while keeping its styling — most often a Next.js `Link`:
+
+`<Button asChild><Link href="/x">Go</Link></Button>`
+
+This keeps a single source of truth for button styling instead of duplicating
+classes onto anchors.
+
+## Accessibility
+
+Renders a native `<button>` by default, so keyboard activation and focus come for
+free. A visible `focus-visible` ring is included. When using `asChild`, make sure
+the child is an interactive element (a link or button).

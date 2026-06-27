@@ -1,0 +1,26 @@
+## Overview
+
+An accessible modal dialog composed from Radix primitives. It ships the hard parts
+already wired up: focus trap, scroll lock, `Escape` to close, click-outside to
+dismiss, and animated enter/exit.
+
+## Composition
+
+The component is **compositional** rather than a single monolith — you assemble it
+from named parts: `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`,
+`DialogTitle`, `DialogDescription`, `DialogFooter`, and `DialogClose`. This keeps
+markup explicit and lets you place actions wherever you need them.
+
+Wrap your trigger and close buttons with `asChild` to reuse the `Button` component
+without nesting interactive elements.
+
+## Accessibility
+
+`DialogTitle` and `DialogDescription` are wired to `aria-labelledby` /
+`aria-describedby` automatically. Always include a `DialogTitle` — Radix warns at
+runtime if one is missing, since assistive tech relies on it.
+
+## Animation
+
+Enter/exit transitions use `tw-animate-css` data-state utilities, so the dialog
+fades and zooms cleanly without any JavaScript animation code.

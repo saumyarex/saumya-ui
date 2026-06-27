@@ -1,0 +1,25 @@
+## Overview
+
+A surface that reveals a soft radial spotlight tracking the cursor. It is a great
+way to add depth and interactivity to feature cards, pricing tiers, or empty
+states without reaching for a heavy animation library.
+
+## How it works
+
+The effect is driven entirely by **CSS custom properties**. On mouse move we write
+the pointer position to `--x` / `--y` on the element and let a `radial-gradient`
+do the rest — React never re-renders, so it stays smooth even with many cards on
+screen.
+
+> Because there's no per-frame React state, you can drop dozens of these on a page
+> without a performance hit.
+
+## Customizing
+
+Tune the `radius` prop for a tighter or wider glow, and pass any CSS color via
+`color` — including `color-mix()` expressions — to match a section's accent.
+
+## Accessibility
+
+The spotlight layer is purely decorative and marked `aria-hidden`, so it never
+interferes with screen readers or keyboard navigation of the content inside.
