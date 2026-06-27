@@ -1,26 +1,114 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Enable class-based dark mode (toggle) on top of system preference */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  /* Monochrome ink scale (neutral / zinc family) */
+  --color-ink-50: #fafafa;
+  --color-ink-100: #f4f4f5;
+  --color-ink-200: #e4e4e7;
+  --color-ink-300: #d4d4d8;
+  --color-ink-400: #a1a1aa;
+  --color-ink-500: #71717a;
+  --color-ink-600: #52525b;
+  --color-ink-700: #3f3f46;
+  --color-ink-800: #27272a;
+  --color-ink-900: #18181b;
+  --color-ink-950: #09090b;
+
+  /* Emerald accent — the only chromatic color in the system */
+  --color-accent-50: #ecfdf5;
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --radius: 0.65rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Semantic tokens — light theme (default) */
+:root {
+  --background: var(--color-ink-50);
+  --surface: #ffffff;
+  --surface-2: var(--color-ink-100);
+  --foreground: var(--color-ink-950);
+  --muted: var(--color-ink-500);
+  --border: var(--color-ink-200);
+  /* Monochrome-first: the primary action is ink, like the personal site.
+     The emerald scale above stays defined but unused — reintroduce it for a
+     single semantic moment (e.g. a status dot) by pointing --accent at it. */
+  --accent: var(--color-ink-950);
+  --accent-fg: var(--color-ink-50);
+}
+
+/* Dark theme — applied via .dark class (toggle) or system preference */
+.dark {
+  --background: var(--color-ink-950);
+  --surface: var(--color-ink-900);
+  --surface-2: var(--color-ink-800);
+  --foreground: var(--color-ink-50);
+  --muted: var(--color-ink-400);
+  --border: var(--color-ink-800);
+  --accent: var(--color-ink-50);
+  --accent-fg: var(--color-ink-950);
+}
+
+/* Map semantic tokens into Tailwind utilities (bg-background, text-foreground…) */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --radius-base: var(--radius);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* Dotted grid backdrop used behind the hero */
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklch, var(--foreground) 9%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+/* Shiki: drive both light/dark themes from one set of CSS vars */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: transparent;
+}
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
 }
