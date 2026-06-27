@@ -84,6 +84,30 @@ export function getDoc(name: string): string | undefined {
 }
 
 /**
+ * The one-time theme item. Installing it once writes the design tokens and the
+ * dotted-grid utility into the consumer's globals.css, so every component, block,
+ * and template renders correctly without each item re-shipping the tokens.
+ */
+export function buildThemeItem() {
+  return {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: "theme",
+    type: "registry:theme",
+    title: "Saumya UI theme",
+    description:
+      "Monochrome design tokens (ink accent, surfaces, radius) plus the dotted-grid utility. Install once; everything else builds on it.",
+    cssVars: BASE_CSS_VARS,
+    css: {
+      ".bg-grid": {
+        "background-image":
+          "radial-gradient(circle at 1px 1px, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 0)",
+        "background-size": "24px 24px",
+      },
+    },
+  };
+}
+
+/**
  * Build the registry index — a discoverable listing of every item, with the
  * install URL for each. Served at /registry.json. See
  * https://ui.shadcn.com/schema/registry.json

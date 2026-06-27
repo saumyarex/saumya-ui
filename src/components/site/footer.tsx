@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SITE } from "@/lib/site";
+
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-border">
@@ -36,22 +38,19 @@ export function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-medium text-foreground">Saumya</span>
-              <a href="https://saumyarex.xyz" className="text-muted hover:text-foreground">
+              <a href={SITE.authorUrl} className="text-muted hover:text-foreground">
                 Portfolio
               </a>
-              <a
-                href="https://studio.saumyarex.xyz"
-                className="text-muted hover:text-foreground"
-              >
+              <a href={SITE.studioUrl} className="text-muted hover:text-foreground">
                 Studio
               </a>
               <a
-                href="https://github.com"
+                href={SITE.x}
                 target="_blank"
                 rel="noreferrer"
                 className="text-muted hover:text-foreground"
               >
-                GitHub
+                X / Twitter
               </a>
             </div>
             <div className="col-span-2 flex flex-col gap-2 sm:col-span-1">
@@ -59,7 +58,7 @@ export function Footer() {
               <p className="text-muted">
                 I design &amp; ship landing pages and MVPs through{" "}
                 <a
-                  href="https://studio.saumyarex.xyz"
+                  href={SITE.studioUrl}
                   className="font-medium text-foreground underline-offset-4 hover:underline"
                 >
                   Saumya Studio
