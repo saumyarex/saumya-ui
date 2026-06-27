@@ -42,7 +42,7 @@ export default async function TemplatePage({
     .filter((e): e is NonNullable<typeof e> => Boolean(e));
 
   return (
-    <article className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <Link
         href="/templates"
         className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
