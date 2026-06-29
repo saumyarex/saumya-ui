@@ -309,7 +309,37 @@ All styling flows through **`src/app/globals.css`**. It defines:
   one place.
 - A `@theme inline` block that maps tokens to Tailwind classes, so you can write
   `bg-surface`, `text-muted`, `border-border`, `rounded-base`, etc.
-- The `.bg-grid` dotted-grid utility and Shiki's light/dark code colors.
+- `--radius` is `0.75rem`. **Keep it in sync with `--radius-base` in
+  `BASE_CSS_VARS`** (registry-source.ts) so installed components match the site.
+- **Type:** the sans is **Hanken Grotesk** (a tight neutral grotesk); **Geist
+  Mono** is a deliberate accent for eyebrows, labels, index ticks, and the
+  install command. Both are wired in `layout.tsx` (`--font-hanken` →
+  `--font-sans`, `--font-geist-mono` → `--font-mono`).
+- **Editorial utilities** (all in `globals.css`): `.theme-invert` flips the
+  semantic palette to the opposite of the active theme so a section becomes
+  black-on-paper (or paper-on-black in dark) and every child adapts; `.grain`
+  adds film texture; `.reveal` is a zero-JS scroll-in (`animation-timeline:
+  view()`, degrades to visible); `.caret` is the blinking wordmark cursor;
+  `.rule-fade` is a fading hairline; `.marquee` drifts a strip horizontally.
+- The `.bg-grid` dotted-grid utility (component preview canvases) and Shiki's
+  light/dark code colors.
+
+> ⚠️ **Never name a custom class `.invert`** — it collides with Tailwind's
+> built-in `invert` filter utility (`filter: invert(100%)`), which silently
+> colour-inverts the element instead of applying your rule. That's why the
+> palette-flip utility is `.theme-invert`.
+
+**Motion & page transitions:** route changes use React's `<ViewTransition>`
+(enabled by `experimental.viewTransition` in `next.config.ts`). `PageTransition`
+(a client wrapper keyed by `usePathname`) fades the old page out and rises the
+new one in (`.page-in`/`.page-out` → `vt-fade`/`vt-rise`); the nav and footer are
+anchored by `viewTransitionName` so they hold still. Card previews **morph** into
+the detail-page preview — both ends wrap the preview in `<ViewTransition
+name={previewTransitionName(entry.name)} share="morph">` (helper in
+`lib/utils.ts`). All of it respects `prefers-reduced-motion`. `ViewTransition`
+isn't in `@types/react` yet, so it's typed in `src/types/react-view-transition.d.ts`.
+New components/blocks added via the generator get the morph automatically — no
+extra work, since the name is derived from the entry name.
 
 **Dark/light mode:** a tiny script in `layout.tsx` runs before the page paints
 and adds/removes the `dark` class on `<html>` based on `localStorage`. The

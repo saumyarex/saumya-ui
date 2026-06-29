@@ -7,7 +7,8 @@ the shadcn CLI**; the code lands in their repo, fully theirs to edit. Free + MIT
 **Production:** https://ui.saumyarex.xyz (set in `src/lib/site.ts`).
 
 Built with Next.js 16 (App Router) · React 19 · Tailwind v4 · TypeScript · Radix
-primitives · Shiki. Brand: monochrome / neutral (ink accent).
+primitives · Shiki · React View Transitions. Type: Hanken Grotesk + Geist Mono.
+Brand: monochrome / neutral (ink accent).
 
 ## Tiers
 
