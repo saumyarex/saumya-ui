@@ -38,12 +38,18 @@ site does the rest. (See [`GUIDE.md`](./GUIDE.md) for the full architecture.)
 git clone https://github.com/<you>/saumya-ui.git
 cd saumya-ui
 
-# 2. Install dependencies
+# 2. Base your work on `preview` — contributions land there first, not main
+git checkout preview
+
+# 3. Install dependencies
 npm install
 
-# 3. Start the dev server
+# 4. Start the dev server
 npm run dev   # http://localhost:3000
 ```
+
+> **Where contributions go:** open all PRs against the **`preview`** branch.
+> Maintainers review there and promote batches to `main` (production).
 
 ---
 
@@ -98,10 +104,12 @@ on your item's page:
 Before opening a PR, please make sure your item is:
 
 - **Accessible** — keyboard operable, correct roles/labels, visible focus states.
-- **Themeable** — uses the semantic tokens (`bg-background`, `text-foreground`,
-  `text-muted`, `border-border`, …), works in **light and dark** mode.
-- **Monochrome** — the brand is neutral. No colored accents; let typography and
-  spacing carry the design. (Color only for a genuine semantic signal, rarely.)
+- **Works in light and dark** — use the semantic tokens (`bg-background`,
+  `text-foreground`, `text-muted`, `border-border`, …) for chrome so items adapt
+  to the theme.
+- **Any color is welcome** — only **this site's own branding** is monochrome.
+  Your components, blocks, and templates can use whatever colors their design
+  calls for; just make sure they still read well in both light and dark.
 - **Self-contained** — list every npm package in `dependencies` and every other
   registry item in `registryDependencies` so installs work in a fresh project.
 - **Responsive** — looks right from mobile to wide screens.
@@ -122,14 +130,16 @@ All three should pass.
 
 ## Open the pull request
 
-1. Branch: `git checkout -b add-my-thing`
+1. Branch off `preview`: `git checkout preview && git checkout -b add-my-thing`
 2. Commit with a clear message: `feat(component): add my-thing`
-3. Push to your fork and open a PR against `main`.
+3. Push to your fork and open a PR with **`preview`** as the base branch
+   (not `main`).
 4. In the PR description, include a screenshot or short clip of the preview and
    note which tier it is.
 
-A maintainer will review for the quality bar above. Once merged, your item is
-live with your byline on it. 🎉
+A maintainer will review for the quality bar above. Merged work lands on
+`preview` and ships to production when it's promoted to `main` — your byline
+rides along. 🎉
 
 ---
 

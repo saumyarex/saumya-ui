@@ -93,11 +93,12 @@ the registry entry yourself.
 
 Contributions are welcome — components, blocks, and templates. **Every item is
 credited to its author** with a byline that links wherever you choose (X, your
-site, GitHub), so contributing here builds your own credibility too.
+site, GitHub), so contributing here builds your own credibility too. Only the
+site's own branding is monochrome; contributed items can use any color.
 
-See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full fork-to-PR workflow,
-the `author` field, and the quality bar (accessible, themeable, monochrome,
-self-contained).
+Open PRs against the **`preview`** branch (not `main`). See
+**[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full fork-to-PR workflow, the
+`author` field, and the quality bar.
 
 ## Scripts
 
