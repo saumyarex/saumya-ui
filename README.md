@@ -71,12 +71,33 @@ npx shadcn@latest add https://ui.saumyarex.xyz/r/spotlight-card.json
 
 ## Adding a new component
 
-1. Drop the component in `src/registry/ui/<name>.tsx`.
-2. Add a live demo in `src/registry/demos/<name>-demo.tsx` and register it in
-   `src/registry/demos.ts`.
-3. Add an entry to the `registry` array in `src/registry/registry.ts`
-   (title, description, category, npm `dependencies`, `files`).
+The scaffolder wires up the source, demo, and a starter registry entry:
+
+```bash
+npm run new:component my-thing   # or new:block / new:template
+```
+
+Then:
+
+1. Write the component source in the file it created (`src/registry/ui/<name>.tsx`).
+2. Fill in the registry entry in `src/registry/registry.ts` (title, description,
+   category, npm `dependencies`, `files`, and `props`).
+3. Set the `author` field to credit yourself (or remove it to use the default).
 4. `npm run dev` — codegen picks up the new source automatically.
+
+Prefer to do it by hand? Drop the source in `src/registry/ui/<name>.tsx`, add a
+demo in `src/registry/demos/<name>-demo.tsx` (registered in `demos.ts`), and add
+the registry entry yourself.
+
+## Contributing
+
+Contributions are welcome — components, blocks, and templates. **Every item is
+credited to its author** with a byline that links wherever you choose (X, your
+site, GitHub), so contributing here builds your own credibility too.
+
+See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full fork-to-PR workflow,
+the `author` field, and the quality bar (accessible, themeable, monochrome,
+self-contained).
 
 ## Scripts
 
