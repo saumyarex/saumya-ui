@@ -154,14 +154,12 @@ const ENTRY = {
   },`,
 };
 
-// Demo wiring differs: components use a separate demo file; blocks/templates
-// are their own preview.
-const demoImport =
-  type === "component"
-    ? `import ${Pascal}Demo from "./demos/${name}-demo";`
-    : `import { ${Pascal} } from "./${DIR[type]}/${name}";`;
+// Demo wiring is lazy (next/dynamic): components use a separate demo file with a
+// default export; blocks/templates are their own preview (a named export).
 const demoEntry =
-  type === "component" ? `  "${name}": ${Pascal}Demo,` : `  "${name}": ${Pascal},`;
+  type === "component"
+    ? `  "${name}": dynamic(() => import("./demos/${name}-demo")),`
+    : `  "${name}": dynamic(() => import("./${DIR[type]}/${name}").then((m) => m.${Pascal})),`;
 
 // --- do the work ---
 console.log(`\nScaffolding ${type}: ${name}\n`);
@@ -182,7 +180,6 @@ export default function ${Pascal}Demo() {
   );
 }
 
-await insertBefore("src/registry/demos.ts", "// @new-import", demoImport);
 await insertBefore("src/registry/demos.ts", "// @new-demo", demoEntry);
 await insertBefore("src/registry/registry.ts", "// @new-entry", ENTRY[type]);
 

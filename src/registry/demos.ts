@@ -1,50 +1,36 @@
+import dynamic from "next/dynamic";
 import { type ComponentType } from "react";
 
-import ButtonDemo from "./demos/button-demo";
-import SpotlightCardDemo from "./demos/spotlight-card-demo";
-import DialogDemo from "./demos/dialog-demo";
-import BadgeDemo from "./demos/badge-demo";
-import SwitchDemo from "./demos/switch-demo";
-import ShimmerButtonDemo from "./demos/shimmer-button-demo";
-
-import { HeroCentered } from "./blocks/hero-centered";
-import { PricingThreeTier } from "./blocks/pricing-three-tier";
-import { CtaBanner } from "./blocks/cta-banner";
-import { Navbar } from "./blocks/navbar";
-import { FeatureGrid } from "./blocks/feature-grid";
-import { BentoFeatures } from "./blocks/bento-features";
-import { Testimonials } from "./blocks/testimonials";
-import { Stats } from "./blocks/stats";
-import { LogoCloud } from "./blocks/logo-cloud";
-import { Faq } from "./blocks/faq";
-import { Footer } from "./blocks/footer";
-
-import { SaasLanding } from "./templates/saas-landing";
-
-// @new-import — `npm run new:*` inserts demo imports above this line
-
-/** Live preview component for each registry entry, keyed by slug. */
+/**
+ * Live preview component for each registry entry, keyed by slug.
+ *
+ * Each demo is lazy-loaded with next/dynamic, so a page only ships the JS for
+ * the demos it actually renders — the total component count never bloats a page.
+ * Component demos are default exports; blocks/templates are named exports.
+ */
 export const demos: Record<string, ComponentType> = {
   // Components — a focused demo per component.
-  button: ButtonDemo,
-  "spotlight-card": SpotlightCardDemo,
-  dialog: DialogDemo,
-  badge: BadgeDemo,
-  switch: SwitchDemo,
-  "shimmer-button": ShimmerButtonDemo,
+  button: dynamic(() => import("./demos/button-demo")),
+  "spotlight-card": dynamic(() => import("./demos/spotlight-card-demo")),
+  dialog: dynamic(() => import("./demos/dialog-demo")),
+  badge: dynamic(() => import("./demos/badge-demo")),
+  switch: dynamic(() => import("./demos/switch-demo")),
+  "shimmer-button": dynamic(() => import("./demos/shimmer-button-demo")),
   // Blocks — the block itself is the preview.
-  "hero-centered": HeroCentered,
-  "pricing-three-tier": PricingThreeTier,
-  "cta-banner": CtaBanner,
-  navbar: Navbar,
-  "feature-grid": FeatureGrid,
-  "bento-features": BentoFeatures,
-  testimonials: Testimonials,
-  stats: Stats,
-  "logo-cloud": LogoCloud,
-  faq: Faq,
-  footer: Footer,
+  "hero-centered": dynamic(() => import("./blocks/hero-centered").then((m) => m.HeroCentered)),
+  "pricing-three-tier": dynamic(() =>
+    import("./blocks/pricing-three-tier").then((m) => m.PricingThreeTier),
+  ),
+  "cta-banner": dynamic(() => import("./blocks/cta-banner").then((m) => m.CtaBanner)),
+  navbar: dynamic(() => import("./blocks/navbar").then((m) => m.Navbar)),
+  "feature-grid": dynamic(() => import("./blocks/feature-grid").then((m) => m.FeatureGrid)),
+  "bento-features": dynamic(() => import("./blocks/bento-features").then((m) => m.BentoFeatures)),
+  testimonials: dynamic(() => import("./blocks/testimonials").then((m) => m.Testimonials)),
+  stats: dynamic(() => import("./blocks/stats").then((m) => m.Stats)),
+  "logo-cloud": dynamic(() => import("./blocks/logo-cloud").then((m) => m.LogoCloud)),
+  faq: dynamic(() => import("./blocks/faq").then((m) => m.Faq)),
+  footer: dynamic(() => import("./blocks/footer").then((m) => m.Footer)),
   // Templates — a full page.
-  "saas-landing": SaasLanding,
+  "saas-landing": dynamic(() => import("./templates/saas-landing").then((m) => m.SaasLanding)),
   // @new-demo — `npm run new:*` inserts demo entries above this line
 };
