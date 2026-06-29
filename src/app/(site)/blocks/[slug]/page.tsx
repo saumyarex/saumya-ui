@@ -1,8 +1,10 @@
 import { type Metadata } from "next";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+import { previewTransitionName } from "@/lib/utils";
 import { getByTier, getEntryInTier, getAuthor } from "@/registry/registry";
 import { registryUrl } from "@/lib/site";
 import { readPrimarySource, readEntrySources, getDoc } from "@/lib/registry-source";
@@ -67,7 +69,11 @@ export default async function BlockPage({
           {
             value: "preview",
             label: "Preview",
-            content: <BlockPreview name={entry.name} title={entry.title} />,
+            content: (
+              <ViewTransition name={previewTransitionName(entry.name)} share="morph">
+                <BlockPreview name={entry.name} title={entry.title} />
+              </ViewTransition>
+            ),
           },
           {
             value: "code",

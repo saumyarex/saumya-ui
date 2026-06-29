@@ -5,7 +5,10 @@ import { Wordmark } from "@/components/site/logo";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-border">
+    <footer
+      style={{ viewTransitionName: "site-footer" }}
+      className="mt-24 border-t border-border"
+    >
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div className="max-w-xs">

@@ -18,7 +18,7 @@ const ITEM_TYPE: Record<Tier, string> = {
  */
 const BASE_CSS_VARS = {
   theme: {
-    "--radius-base": "0.65rem",
+    "--radius-base": "0.75rem",
     "--color-background": "var(--background)",
     "--color-surface": "var(--surface)",
     "--color-surface-2": "var(--surface-2)",

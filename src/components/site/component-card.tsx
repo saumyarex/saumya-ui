@@ -1,7 +1,9 @@
+import { ViewTransition } from "react";
 import Link from "next/link";
 
 import { type RegistryEntry, hrefFor } from "@/registry/registry";
 import { demos } from "@/registry/demos";
+import { previewTransitionName } from "@/lib/utils";
 
 export function ComponentCard({ entry }: { entry: RegistryEntry }) {
   const Demo = demos[entry.name];
@@ -9,10 +11,13 @@ export function ComponentCard({ entry }: { entry: RegistryEntry }) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-base border border-border bg-surface transition-colors hover:border-ink-400/60">
       {/* Non-interactive preview — demos may contain buttons, so keep them out
-          of the card's anchor (the stretched link below handles navigation). */}
-      <div className="pointer-events-none grid min-h-50 flex-1 place-items-center overflow-hidden border-b border-border bg-grid p-8">
-        {Demo ? <Demo /> : null}
-      </div>
+          of the card's anchor (the stretched link below handles navigation).
+          Shares a view-transition name with the detail page so it morphs in. */}
+      <ViewTransition name={previewTransitionName(entry.name)} share="morph">
+        <div className="pointer-events-none grid min-h-50 flex-1 place-items-center overflow-hidden border-b border-border bg-grid p-8">
+          {Demo ? <Demo /> : null}
+        </div>
+      </ViewTransition>
       <div className="p-4">
         <div className="flex items-center justify-between gap-2">
           <h3 className="font-medium tracking-tight text-foreground">{entry.title}</h3>
