@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SITE } from "@/lib/site";
-import { Logo } from "@/components/site/logo";
+import { Wordmark } from "@/components/site/logo";
 
 export function Footer() {
   return (
@@ -9,10 +9,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div className="max-w-xs">
-            <div className="flex items-center gap-2 font-semibold tracking-tight">
-              <Logo className="size-6 text-foreground" />
-              Saumya <span className="text-muted">UI</span>
-            </div>
+            <Wordmark className="text-base" />
             <p className="mt-3 text-sm text-muted">
               Accessible React components, blocks &amp; templates. Copy-paste or
               install with the shadcn CLI.
@@ -34,12 +31,19 @@ export function Footer() {
               <Link href="/changelog" className="text-muted hover:text-foreground">
                 Changelog
               </Link>
+              {SITE.github && (
+                <a
+                  href={`${SITE.github}/blob/main/CONTRIBUTING.md`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted hover:text-foreground"
+                >
+                  Contribute
+                </a>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-medium text-foreground">Saumya</span>
-              <a href={SITE.authorUrl} className="text-muted hover:text-foreground">
-                Portfolio
-              </a>
               <a href={SITE.studioUrl} className="text-muted hover:text-foreground">
                 Studio
               </a>
@@ -82,7 +86,9 @@ export function Footer() {
           <p>
             Built by{" "}
             <a
-              href="https://saumyarex.xyz"
+              href={SITE.x}
+              target="_blank"
+              rel="noreferrer"
               className="font-medium text-foreground underline-offset-4 hover:underline"
             >
               Saumya

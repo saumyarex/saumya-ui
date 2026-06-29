@@ -41,44 +41,23 @@ export default async function Image() {
               background: ACCENT,
             }}
           >
-            <div style={{ position: "relative", display: "flex", width: 26, height: 26 }}>
-              <div
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: 0,
-                  width: 16,
-                  height: 16,
-                  borderRadius: 4,
-                  border: `3px solid ${INK}`,
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  left: 6,
-                  top: 6,
-                  width: 20,
-                  height: 20,
-                  borderRadius: 5,
-                  background: ACCENT,
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  left: 8,
-                  top: 8,
-                  width: 16,
-                  height: 16,
-                  borderRadius: 4,
-                  background: INK,
-                }}
-              />
-            </div>
+            {/* the "/" of a self-closing tag */}
+            <div
+              style={{
+                display: "flex",
+                width: 5,
+                height: 26,
+                borderRadius: 3,
+                background: INK,
+                transform: "rotate(28deg)",
+              }}
+            />
           </div>
           <div style={{ display: "flex", fontSize: 28, color: FG, fontWeight: 600 }}>
-            Saumya <span style={{ color: MUTED, marginLeft: 8 }}>UI</span>
+            <span style={{ color: MUTED }}>&lt;</span>
+            <span style={{ marginLeft: 2 }}>Saumya</span>
+            <span style={{ color: MUTED, marginLeft: 8 }}>ui</span>
+            <span style={{ color: MUTED, marginLeft: 8 }}>/&gt;</span>
           </div>
         </div>
 

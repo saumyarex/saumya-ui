@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { SITE } from "@/lib/site";
 import { Button } from "@/registry/ui/button";
-import { Logo } from "@/components/site/logo";
+import { Wordmark } from "@/components/site/logo";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { CommandMenu } from "@/components/site/command-menu";
 
@@ -27,11 +27,8 @@ export function Nav() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-            <Logo className="size-6 text-foreground" />
-            <span>
-              Saumya <span className="text-muted">UI</span>
-            </span>
+          <Link href="/" aria-label="Saumya UI — home">
+            <Wordmark className="text-base" />
           </Link>
           <nav className="hidden items-center gap-1 text-sm sm:flex">
             <Link
