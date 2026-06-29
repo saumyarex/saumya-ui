@@ -18,10 +18,13 @@ For every item, a visitor can either **copy-paste** the code, or **install it
 with one terminal command** using the shadcn CLI:
 
 ```bash
-npx shadcn@latest add https://labs.saumyarex.xyz/r/button.json
+npx shadcn@latest add https://ui.saumyarex.xyz/r/button.json
 ```
 
 That command drops the real source files straight into their own project.
+
+**Production URL:** https://ui.saumyarex.xyz — change it in one place, `src/lib/site.ts`
+(the `url` field), and every install command, OG image, and sitemap follows.
 
 ---
 
@@ -104,7 +107,7 @@ labs-saumya/
 │   │   └── robots.ts              # /robots.txt for SEO
 │   ├── registry/                 # THE LIBRARY ITSELF (the products)
 │   │   ├── registry.ts           # ⭐ the master list of every item
-│   │   ├── demos.ts              # maps each item name -> its preview component
+│   │   ├── demos.ts              # maps each item name -> its preview (lazy-loaded via next/dynamic)
 │   │   ├── ui/                    # the 6 components' source code
 │   │   ├── blocks/                # the 11 blocks' source code
 │   │   ├── templates/             # the template(s) source code
@@ -181,7 +184,7 @@ A block like `pricing-three-tier` is built **from** the `button` and `badge`
 components. So its entry lists `registryDependencies: ["button", "badge"]`.
 
 When someone installs the block, those names are automatically turned into full
-URLs (e.g. `https://labs.saumyarex.xyz/r/button.json`) so the shadcn CLI fetches
+URLs (e.g. `https://ui.saumyarex.xyz/r/button.json`) so the shadcn CLI fetches
 the block **and** its components in one go. A template lists all its blocks the
 same way, so installing a template pulls the whole tree: template → blocks →
 components. (That name-to-URL magic happens in `buildRegistryItem`, see §7.)

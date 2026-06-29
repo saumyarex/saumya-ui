@@ -3,7 +3,7 @@ import { buildRegistryIndex } from "@/lib/registry-source";
 /**
  * Registry index — lists every component with its install URL.
  *
- *   curl https://labs.saumyarex.xyz/registry.json
+ *   curl https://ui.saumyarex.xyz/registry.json
  *
  * Useful for discovery, tooling, and a future "install everything" flow.
  */

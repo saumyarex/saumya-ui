@@ -4,6 +4,8 @@ An open-source UI library — accessible, beautifully-crafted React **components
 blocks, and templates**. Visitors can **copy-paste** the source or **install with
 the shadcn CLI**; the code lands in their repo, fully theirs to edit. Free + MIT.
 
+**Production:** https://ui.saumyarex.xyz (set in `src/lib/site.ts`).
+
 Built with Next.js 16 (App Router) · React 19 · Tailwind v4 · TypeScript · Radix
 primitives · Shiki. Brand: monochrome / neutral (ink accent).
 
@@ -62,7 +64,7 @@ static output.
 ## Install a component (consumer side)
 
 ```bash
-npx shadcn@latest add https://labs.saumyarex.xyz/r/spotlight-card.json
+npx shadcn@latest add https://ui.saumyarex.xyz/r/spotlight-card.json
 ```
 
 …or open the component page and copy the source from the **Manual** tab.

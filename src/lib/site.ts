@@ -1,7 +1,7 @@
 /** Canonical site config. Update the URL here if the domain ever changes. */
 export const SITE = {
   name: "Saumya UI",
-  url: "https://labs.saumyarex.xyz",
+  url: "https://ui.saumyarex.xyz",
   author: "Saumya",
   authorUrl: "https://saumyarex.xyz",
   studioUrl: "https://studio.saumyarex.xyz",

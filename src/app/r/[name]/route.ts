@@ -4,8 +4,8 @@ import { buildRegistryItem, buildThemeItem } from "@/lib/registry-source";
 /**
  * shadcn-compatible registry endpoint.
  *
- *   npx shadcn@latest add https://labs.saumyarex.xyz/r/button.json
- *   npx shadcn@latest add https://labs.saumyarex.xyz/r/theme.json   (one-time)
+ *   npx shadcn@latest add https://ui.saumyarex.xyz/r/button.json
+ *   npx shadcn@latest add https://ui.saumyarex.xyz/r/theme.json   (one-time)
  *
  * The `.json` suffix is optional and stripped. Pre-rendered for every entry.
  */

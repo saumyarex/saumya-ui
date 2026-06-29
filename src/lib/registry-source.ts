@@ -115,7 +115,7 @@ export function buildThemeItem() {
 export function buildRegistryIndex() {
   return {
     $schema: "https://ui.shadcn.com/schema/registry.json",
-    name: "saumya-labs",
+    name: "saumya-ui",
     homepage: SITE.url,
     items: registry.map((entry) => ({
       name: entry.name,

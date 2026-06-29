@@ -179,7 +179,7 @@ export default function HomePage() {
           <CodeBlock
             lang="bash"
             fileName="Terminal"
-            code={`# 1. one-time: install the theme tokens\nnpx shadcn@latest add https://labs.saumyarex.xyz/r/theme.json\n\n# 2. add anything — components, blocks, or a whole template\nnpx shadcn@latest add https://labs.saumyarex.xyz/r/spotlight-card.json`}
+            code={`# 1. one-time: install the theme tokens\nnpx shadcn@latest add https://ui.saumyarex.xyz/r/theme.json\n\n# 2. add anything — components, blocks, or a whole template\nnpx shadcn@latest add https://ui.saumyarex.xyz/r/spotlight-card.json`}
           />
           <p className="text-center text-sm text-muted">
             Run the theme once, then add any component, block, or template.
