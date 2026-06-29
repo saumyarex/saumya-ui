@@ -3,13 +3,14 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-import { getByTier, getEntryInTier } from "@/registry/registry";
+import { getByTier, getEntryInTier, getAuthor } from "@/registry/registry";
 import { registryUrl } from "@/lib/site";
 import { readPrimarySource, readEntrySources, getDoc } from "@/lib/registry-source";
 import { CodeBlock } from "@/components/site/code-block";
 import { BlockPreview } from "@/components/site/block-preview";
 import { Tabbed } from "@/components/site/tabbed";
 import { Mdx } from "@/components/site/mdx";
+import { AuthorByline } from "@/components/site/author-byline";
 
 export function generateStaticParams() {
   return getByTier("block").map((entry) => ({ slug: entry.name }));
@@ -57,6 +58,7 @@ export default async function BlockPage({
           </span>
         </div>
         <p className="mt-2 max-w-2xl text-pretty text-muted">{entry.description}</p>
+        <AuthorByline author={getAuthor(entry)} className="mt-4" />
       </header>
 
       {/* Preview / Code */}

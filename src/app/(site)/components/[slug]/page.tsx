@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-import { getByTier, getEntryInTier } from "@/registry/registry";
+import { getByTier, getEntryInTier, getAuthor } from "@/registry/registry";
 import { registryUrl } from "@/lib/site";
 import { readPrimarySource, readEntrySources, getDoc } from "@/lib/registry-source";
 import { demos } from "@/registry/demos";
@@ -12,6 +12,7 @@ import { ComponentPreview } from "@/components/site/component-preview";
 import { Tabbed } from "@/components/site/tabbed";
 import { Mdx } from "@/components/site/mdx";
 import { PropsTable } from "@/components/site/props-table";
+import { AuthorByline } from "@/components/site/author-byline";
 
 export function generateStaticParams() {
   return getByTier("component").map((entry) => ({ slug: entry.name }));
@@ -60,6 +61,7 @@ export default async function ComponentPage({
           </span>
         </div>
         <p className="mt-2 max-w-2xl text-pretty text-muted">{entry.description}</p>
+        <AuthorByline author={getAuthor(entry)} className="mt-4" />
       </header>
 
       {/* Preview / Code */}

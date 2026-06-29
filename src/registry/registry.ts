@@ -21,6 +21,16 @@ export interface PropDef {
   description: string;
 }
 
+/** Credit for whoever contributed an item. Shown as a byline on its docs page. */
+export interface Author {
+  /** Display name. */
+  name: string;
+  /** Where the byline links — X, personal site, GitHub, wherever they want credit. */
+  url?: string;
+  /** Optional avatar image URL (square). Falls back to the name's initial. */
+  avatar?: string;
+}
+
 export interface RegistryFile {
   /** Path to the source file, relative to the project root. */
   source: string;
@@ -51,6 +61,19 @@ export interface RegistryEntry {
   /** ISO date, used for sorting "new" badges. */
   date: string;
   featured?: boolean;
+  /** Who contributed this item. Defaults to the maintainer when omitted. */
+  author?: Author;
+}
+
+/** Fallback byline for first-party items that don't set their own author. */
+export const DEFAULT_AUTHOR: Author = {
+  name: "Saumya",
+  url: "https://x.com/saumyarex",
+};
+
+/** The author to credit for an entry — its own, or the maintainer fallback. */
+export function getAuthor(entry: RegistryEntry): Author {
+  return entry.author ?? DEFAULT_AUTHOR;
 }
 
 /** The `cn` helper every component imports — bundled so installs are self-contained. */

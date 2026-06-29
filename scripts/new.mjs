@@ -124,6 +124,9 @@ const ENTRY = {
       UTILS_FILE,
     ],
     date: "${today}",
+    // Credit yourself — your byline links wherever you point it (X, site, GitHub).
+    // Remove this to fall back to the maintainer's byline.
+    author: { name: "TODO: Your Name", url: "https://x.com/you" },
   },`,
   block: `  {
     name: "${name}",
@@ -137,6 +140,9 @@ const ENTRY = {
       { source: "${sourceRel}", target: "components/blocks/${name}.tsx", type: "registry:block" },
     ],
     date: "${today}",
+    // Credit yourself — your byline links wherever you point it (X, site, GitHub).
+    // Remove this to fall back to the maintainer's byline.
+    author: { name: "TODO: Your Name", url: "https://x.com/you" },
   },`,
   template: `  {
     name: "${name}",
@@ -151,6 +157,9 @@ const ENTRY = {
       { source: "${sourceRel}", target: "components/templates/${name}.tsx", type: "registry:block" },
     ],
     date: "${today}",
+    // Credit yourself — your byline links wherever you point it (X, site, GitHub).
+    // Remove this to fall back to the maintainer's byline.
+    author: { name: "TODO: Your Name", url: "https://x.com/you" },
   },`,
 };
 
@@ -189,5 +198,6 @@ console.log(`
    2. Edit the new entry in src/registry/registry.ts (description, category${
      type === "block" || type === "template" ? ", registryDependencies" : ", props"
    })
-   3. npm run dev  →  visit /${DIR[type] === "ui" ? "components" : DIR[type]}/${name}
+   3. Set your byline: update the \`author\` field (or remove it to use the default)
+   4. npm run dev  →  visit /${DIR[type] === "ui" ? "components" : DIR[type]}/${name}
 `);

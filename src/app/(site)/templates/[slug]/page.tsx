@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
 
-import { getByTier, getEntryInTier, getEntry } from "@/registry/registry";
+import { getByTier, getEntryInTier, getEntry, getAuthor } from "@/registry/registry";
 import { registryUrl } from "@/lib/site";
 import { readPrimarySource } from "@/lib/registry-source";
 import { CodeBlock } from "@/components/site/code-block";
 import { BlockPreview } from "@/components/site/block-preview";
 import { Tabbed } from "@/components/site/tabbed";
+import { AuthorByline } from "@/components/site/author-byline";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -63,6 +64,7 @@ export default async function TemplatePage({
           </span>
         </div>
         <p className="mt-2 max-w-2xl text-pretty text-muted">{entry.description}</p>
+        <AuthorByline author={getAuthor(entry)} className="mt-4" />
       </header>
 
       <Tabbed
