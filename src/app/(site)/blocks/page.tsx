@@ -2,6 +2,8 @@ import { type Metadata } from "next";
 
 import { getByTier, getCategories } from "@/registry/registry";
 import { BlockCard } from "@/components/site/block-card";
+import { PageHeader, CategoryLabel } from "@/components/site/section-heading";
+import { InstallCommand } from "@/components/site/install-command";
 
 export const metadata: Metadata = {
   title: "Blocks",
@@ -14,27 +16,38 @@ export default function BlocksPage() {
   const categories = getCategories("block");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <header className="mb-10">
-        <h1 className="text-3xl font-semibold tracking-tight">Blocks</h1>
-        <p className="mt-2 max-w-2xl text-muted">
-          Full, responsive sections built from the components — drop a whole hero,
-          pricing table, or CTA into your project. Install one and its component
-          dependencies come with it.
-        </p>
-      </header>
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <PageHeader
+        eyebrow={`${blocks.length} blocks`}
+        title={
+          <>
+            Whole sections,
+            <br />
+            <span className="text-muted">drop-in</span> ready.
+          </>
+        }
+        lede="Heroes, pricing tables, CTAs — full responsive sections built from the components. Install one and its component dependencies come with it."
+      >
+        <div className="max-w-md">
+          <InstallCommand command="npx shadcn@latest add ui.saumyarex.xyz/r/pricing-three-tier.json" />
+        </div>
+      </PageHeader>
 
-      <div className="space-y-12">
-        {categories.map((category) => {
+      <div className="mt-16 space-y-16">
+        {categories.map((category, i) => {
           const items = blocks.filter((e) => e.category === category);
           return (
             <section key={category}>
-              <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-muted">
-                {category}
-              </h2>
-              <div className="grid gap-6 lg:grid-cols-2">
+              <CategoryLabel
+                index={String(i + 1).padStart(2, "0")}
+                label={category}
+                count={items.length}
+              />
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
                 {items.map((entry) => (
-                  <BlockCard key={entry.name} entry={entry} />
+                  <div key={entry.name} className="reveal">
+                    <BlockCard entry={entry} />
+                  </div>
                 ))}
               </div>
             </section>
