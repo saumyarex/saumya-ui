@@ -51,6 +51,16 @@ export function Footer() {
               >
                 X / Twitter
               </a>
+              {SITE.github && (
+                <a
+                  href={SITE.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted hover:text-foreground"
+                >
+                  GitHub
+                </a>
+              )}
             </div>
             <div className="col-span-2 flex flex-col gap-2 sm:col-span-1">
               <span className="font-medium text-foreground">Need it built?</span>

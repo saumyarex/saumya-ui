@@ -6,7 +6,7 @@ export const SITE = {
   authorUrl: "https://saumyarex.xyz",
   studioUrl: "https://studio.saumyarex.xyz",
   /** Social links. `github` is null until the repo is public. */
-  github: null as string | null,
+  github: "https://github.com/saumyarex/saumya-ui" as string | null,
   x: "https://x.com/saumyarex",
 } as const;
 
