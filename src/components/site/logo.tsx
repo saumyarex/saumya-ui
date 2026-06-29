@@ -41,12 +41,19 @@ export function Logo({ className }: { className?: string }) {
   );
 }
 
-/** Primary lockup — `<Saumya ui />` as a self-closing JSX tag. */
-export function Wordmark({ className }: { className?: string }) {
+/** Primary lockup — `<Saumya ui />` as a self-closing JSX tag.
+ *  `caret` appends the blinking code-cursor motif (used in the hero). */
+export function Wordmark({
+  className,
+  caret = false,
+}: {
+  className?: string;
+  caret?: boolean;
+}) {
   return (
     <span
       className={cn(
-        "font-mono font-semibold tracking-tight whitespace-nowrap",
+        "inline-flex items-baseline font-mono font-semibold tracking-tight whitespace-nowrap",
         className,
       )}
       aria-label="Saumya UI"
@@ -55,6 +62,7 @@ export function Wordmark({ className }: { className?: string }) {
       <span className="text-foreground">Saumya</span>
       <span className="text-muted">&nbsp;ui&nbsp;</span>
       <span className="text-muted">/&gt;</span>
+      {caret && <span className="caret" aria-hidden />}
     </span>
   );
 }

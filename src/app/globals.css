@@ -28,10 +28,13 @@
   --color-accent-600: #059669;
   --color-accent-700: #047857;
 
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-hanken);
   --font-mono: var(--font-geist-mono);
 
-  --radius: 0.65rem;
+  --radius: 0.75rem;
+
+  /* Editorial easing — slow-out, shared by motion + transitions. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Semantic tokens — light theme (default) */
@@ -92,14 +95,185 @@ body {
   color: var(--background);
 }
 
-/* Dotted grid backdrop used behind the hero */
+/* ── Inverted panel ──────────────────────────────────────────────
+   Flips the semantic palette to the *opposite* of the active theme so
+   any section can become true-black-on-paper (light mode) or paper-on-
+   black (dark mode). Every child built on semantic tokens — buttons,
+   cards, badges — adapts automatically. This is the depth engine. */
+.theme-invert {
+  --background: var(--color-ink-950);
+  --surface: var(--color-ink-900);
+  --surface-2: var(--color-ink-800);
+  --foreground: var(--color-ink-50);
+  --muted: var(--color-ink-400);
+  --border: color-mix(in oklch, var(--color-ink-50) 12%, transparent);
+  --accent: var(--color-ink-50);
+  --accent-fg: var(--color-ink-950);
+  background: var(--background);
+  color: var(--foreground);
+}
+.dark .theme-invert {
+  --background: var(--color-ink-50);
+  --surface: #ffffff;
+  --surface-2: var(--color-ink-100);
+  --foreground: var(--color-ink-950);
+  --muted: var(--color-ink-500);
+  --border: var(--color-ink-200);
+  --accent: var(--color-ink-950);
+  --accent-fg: var(--color-ink-50);
+}
+
+/* Dotted grid backdrop — used inside component preview canvases. */
 .bg-grid {
   background-image: radial-gradient(
     circle at 1px 1px,
-    color-mix(in oklch, var(--foreground) 9%, transparent) 1px,
+    color-mix(in oklch, var(--foreground) 8%, transparent) 1px,
     transparent 0
   );
-  background-size: 24px 24px;
+  background-size: 22px 22px;
+}
+
+/* Hairline rule that fades at both ends — editorial section separator. */
+.rule-fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklch, var(--foreground) 14%, transparent) 18%,
+    color-mix(in oklch, var(--foreground) 14%, transparent) 82%,
+    transparent
+  );
+}
+
+/* ── Signature motif: the blinking code caret in the wordmark ───── */
+.caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 1em;
+  margin-left: 0.08em;
+  translate: 0 0.12em;
+  background: currentColor;
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* ── Film grain overlay — crafted texture, not default dots ──────── */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+/* ── Scroll-driven reveal — zero-JS, progressive enhancement ─────
+   Default state is fully visible; the entrance only applies where the
+   browser supports scroll timelines and the user allows motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in both linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Marquee — continuous horizontal drift (tech / logo strip) ──── */
+.marquee {
+  animation: marquee 38s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ── Cross-route view transitions ───────────────────────────────
+   The page content (main) fades out fast, then the next page rises in
+   with a soft blur. Nav + footer are anchored by name so they hold
+   still — only the content moves. Mirrors the .reveal entrance. */
+::view-transition-old(.page-out) {
+  animation: 140ms ease-in both vt-fade reverse;
+}
+::view-transition-new(.page-in) {
+  animation:
+    260ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both vt-fade,
+    340ms cubic-bezier(0.16, 1, 0.3, 1) both vt-rise;
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes vt-rise {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Shared-element morph: a card's preview canvas morphs into the detail
+   page's preview (matching view-transition name + share="morph"). The blur
+   mid-flight hides pixel interpolation as the canvas scales. */
+::view-transition-group(.morph) {
+  animation-duration: 440ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: morph-blur;
+  animation-duration: 440ms;
+}
+@keyframes morph-blur {
+  40% {
+    filter: blur(4px);
+  }
+}
+
+/* Anchor the persistent chrome — it must not move between routes. */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header),
+::view-transition-new(site-header),
+::view-transition-group(site-footer),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }
 
 /* Shiki: drive both light/dark themes from one set of CSS vars */
