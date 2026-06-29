@@ -92,8 +92,8 @@ export function Footer() {
               className="font-medium text-foreground underline-offset-4 hover:underline"
             >
               Saumya
-            </a>{" "}
-            — design engineer.
+            </a>
+            <span>.</span>
           </p>
           <p>MIT licensed. Open source. Copy, paste, ship.</p>
         </div>

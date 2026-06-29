@@ -25,9 +25,10 @@ export const metadata: Metadata = {
   },
 };
 
-// Set the theme before paint to avoid a flash. Defaults to dark.
+// Set the theme before paint to avoid a flash. "system" (and no stored value)
+// follow the OS preference; "light"/"dark" are explicit overrides.
 const themeScript = `
-(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();
+(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark', t==='dark' || (t!=='light' && d));}catch(e){document.documentElement.classList.add('dark');}})();
 `;
 
 export default function RootLayout({
