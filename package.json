@@ -2,6 +2,8 @@
   "name": "labs-saumya",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Saumya",
   "scripts": {
     "registry": "node scripts/build-registry.mjs",
     "new:component": "node scripts/new.mjs component",
