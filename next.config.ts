@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // Enable React's <ViewTransition> integration for animated route changes.
+    viewTransition: true,
+  },
 };
 
 export default nextConfig;

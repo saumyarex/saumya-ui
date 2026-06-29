@@ -1,8 +1,9 @@
+import { ViewTransition } from "react";
 import Link from "next/link";
 
 import { type RegistryEntry, hrefFor } from "@/registry/registry";
 import { demos } from "@/registry/demos";
-import { cn } from "@/lib/utils";
+import { cn, previewTransitionName } from "@/lib/utils";
 
 /** Gallery card for a full template — scaled full-page thumbnail + Free/Pro tag. */
 export function TemplateCard({ entry }: { entry: RegistryEntry }) {
@@ -10,15 +11,17 @@ export function TemplateCard({ entry }: { entry: RegistryEntry }) {
 
   return (
     <div className="group relative overflow-hidden rounded-base border border-border bg-surface transition-colors hover:border-ink-400/60">
-      <div className="relative h-80 overflow-hidden border-b border-border bg-background">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-0 origin-top-left scale-[0.34]"
-          style={{ width: "294%" }}
-        >
-          {Demo ? <Demo /> : null}
+      <ViewTransition name={previewTransitionName(entry.name)} share="morph">
+        <div className="relative h-80 overflow-hidden border-b border-border bg-background">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-0 origin-top-left scale-[0.34]"
+            style={{ width: "294%" }}
+          >
+            {Demo ? <Demo /> : null}
+          </div>
         </div>
-      </div>
+      </ViewTransition>
       <div className="flex items-start justify-between gap-3 p-4">
         <div>
           <h3 className="font-medium tracking-tight text-foreground">{entry.title}</h3>

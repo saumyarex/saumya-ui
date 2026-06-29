@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
@@ -10,7 +11,7 @@ import { CodeBlock } from "@/components/site/code-block";
 import { BlockPreview } from "@/components/site/block-preview";
 import { Tabbed } from "@/components/site/tabbed";
 import { AuthorByline } from "@/components/site/author-byline";
-import { cn } from "@/lib/utils";
+import { cn, previewTransitionName } from "@/lib/utils";
 
 export function generateStaticParams() {
   return getByTier("template").map((entry) => ({ slug: entry.name }));
@@ -72,7 +73,11 @@ export default async function TemplatePage({
           {
             value: "preview",
             label: "Preview",
-            content: <BlockPreview name={entry.name} title={entry.title} />,
+            content: (
+              <ViewTransition name={previewTransitionName(entry.name)} share="morph">
+                <BlockPreview name={entry.name} title={entry.title} />
+              </ViewTransition>
+            ),
           },
           {
             value: "code",
